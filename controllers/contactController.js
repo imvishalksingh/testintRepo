@@ -1,7 +1,5 @@
 import nodemailer from "nodemailer";
 
-import nodemailer from "nodemailer";
-
 export const sendContactMail = async (req, res) => {
   console.log("sendContactMail called with:", { 
     name: req.body.name, 
