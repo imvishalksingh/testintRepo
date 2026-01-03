@@ -1,10 +1,12 @@
 import express from "express";
-import { sendContactMail } from "../controllers/contactController.js";
-import { testEmailEndpoint } from "../controllers/contactController.js";
+import {
+  sendContactMail,
+  testEmailEndpoint,
+} from "../controllers/contactController.js";
 
 const router = express.Router();
 
-router.post("/", sendContactMail);
-router.get("/", testEmailEndpoint);
+router.post("/send", sendContactMail);
+router.get("/test", testEmailEndpoint);
 
 export default router;

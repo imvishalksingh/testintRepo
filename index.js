@@ -3,17 +3,22 @@ import cors from "cors";
 import dotenv from "dotenv";
 import contactRoutes from "./routes/contactRoutes.js";
 
-dotenv.config();   //  correct for deployment
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: "https://shreemehoba.vercel.app" }));
+app.use(
+  cors({
+    origin: "https://shreemehoba.vercel.app",
+    methods: ["GET", "POST"],
+  })
+);
+
 app.use(express.json());
 
-// contact route
+// routes
 app.use("/api/contact", contactRoutes);
-app.use("/api/test-email", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend server is running");
