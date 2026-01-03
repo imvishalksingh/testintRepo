@@ -80,3 +80,26 @@ export const sendContactMail = async (req, res) => {
     });
   }
 };
+
+// test-email.js or a test route
+export const testEmailEndpoint = async (req, res) => {
+  try {
+    console.log("Test endpoint hit");
+    console.log("EMAIL_USER exists:", !!process.env.EMAIL_USER);
+    console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+    
+    // Quick response to test if endpoint is reachable
+    res.status(200).json({ 
+      status: "Endpoint working",
+      envVars: {
+        emailUserSet: !!process.env.EMAIL_USER,
+        emailPassSet: !!process.env.EMAIL_PASS,
+        nodeEnv: process.env.NODE_ENV
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error("Test endpoint error:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
