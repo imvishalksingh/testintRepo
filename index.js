@@ -13,7 +13,7 @@ app.use(express.json());
 
 // contact route
 app.use("/api/contact", contactRoutes);
-router.get("/test-email", testEmailEndpoint);
+router.get("api/test-email", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend server is running");
